@@ -7,10 +7,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/whoami", (req, res) => {
-  console.log(req);
-  console.log("-----------------------------------------");
   console.log(req.headers);
-  res.json(req.headers);
+  res.json({
+    software: req.headers["user-agent"],
+    ipaddress: req.headers["x-forwarded-for"],
+    language: req.headers["accept-language"]
+  });
 });
 
 app.listen(PORT, ()=>console.log("Server is Listening"));
