@@ -6,4 +6,11 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
+app.get("/api/whoami", (req, res) => {
+  console.log(req);
+  console.log("-----------------------------------------");
+  console.log(req.headers);
+  res.json(req.headers);
+});
+
 app.listen(PORT, ()=>console.log("Server is Listening"));
